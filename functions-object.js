@@ -81,7 +81,7 @@ function getexactTemdegt(temdegt, temdegts) {
   }
   return -1;
 }
-find = getexactTemdegt("!", ["&", "!", "+", "=", "*", "@", "%", "-"]);
+find = getexactTemdegt("+", "!&+=*@%-");
 console.log(find);
 
 //daalgavar4  Өгөгдсөн array - ийн дундажыг олох функц бич.
@@ -109,28 +109,81 @@ find = calculateSum([9, 46, 3, 109, 92, 97]);
 
 //daalgavar6   Өгөгдсөн тоо анхны эсэхийг олох функц бич.
 function checkPrimenumber(too) {
-  // {
-  //     huvaagch = too - 1;
-  //   for (i = 1; i < huvaagch; i++) {
-
-  //     huvaagch++;
-  //     too % huvaagch == 0;
-  //     if (too % huvaagch !== 0) {
-  //       console.log("Анхны тоо бол мөн : ", too);
-  //     } else {
-  //       console.log("Анхны тоо биш юм : ", too);
-  //     }
-  //   }
-  // }
-  huvaagch = too - 1;
-  while (huvaagch > 1) {
-    if (too % huvaagch == 0);
-    return "анхны тоо биш : " + too;
-    huvaagch = huvaagch - 1;
+  for (i = 2; i < too; i++) {
+    if (too % i == 0) {
+      return false;
+    }
   }
-  return "анхны тоо мөн юм : " + too;
+  return true;
 }
-if (checkPrimenumber) {
-  console.log("анхны тоо биш : ");
-} else console.log("анхны тоо мөн юм : ");
-find = checkPrimenumber(7);
+if (checkPrimenumber(8)) {
+  console.log("энэ тоо бол анхны тоо");
+} else {
+  console.log("энэ тоо бол анхны тоо биш");
+}
+//   huvaagch = too - 1;
+//   while (huvaagch > 1) {
+//     if (too % huvaagch == 0);
+//     return "анхны тоо биш : " + too;
+//     huvaagch = huvaagch - 1;
+//   }
+//   return "анхны тоо мөн юм : " + too;
+// }
+// if (checkPrimenumber) {
+//   console.log("анхны тоо биш : ");
+// } else console.log("анхны тоо мөн юм : ");
+// find = checkPrimenumber(7);
+// function checkPrimenumber(too) {
+//   for (i = 1; i < huvaagch; i++) {
+//     if (too % i == 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+//daalgavar7   Palindrome too eseh jishee ni: input: 121 output: true, input: -121 output: false, input: 12  output: false
+function palindrome(n) {
+  let too = 0;
+  let urvuuToo = 0;
+  let firstNumber = n;
+  while (n > 0) {
+    too = n % 10;
+    urvuuToo = urvuuToo * 10 + too;
+    n = n - too;
+    n = n / 10;
+  }
+
+  if (urvuuToo === firstNumber) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+find = palindrome(1221);
+if (find) {
+  console.log("palindrome мөн");
+} else {
+  console.log("palindrome биш");
+}
+
+//daalgavar8 Ugugdsun string urvuulna gargah jishee ni: input: hello output: olleh
+// function urvuulah(word) {
+//   let alpha5 = word[0];
+//   let alpha4 = word[1];
+//   let alpha3 = word[2];
+//   let alpha2 = word[3];
+//   let alpha1 = word[4];
+//   return alpha1 + alpha2 + alpha3 + alpha4 + alpha5;
+// }
+function urvuulah(word) {
+  let urvuuW;
+  let alpha;
+  for (i = 0; i <= word.length; i++) {
+    alpha = word[i];
+    urvuuW = +alpha;
+  }
+}
+find = urvuulah("hello");
+console.log(find);
