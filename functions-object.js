@@ -178,12 +178,103 @@ if (find) {
 //   return alpha1 + alpha2 + alpha3 + alpha4 + alpha5;
 // }
 function urvuulah(word) {
-  let urvuuW;
+  let urvuuW = "";
   let alpha;
-  for (i = 0; i <= word.length; i++) {
+  for (let i = word.length - 1; i >= 0; i--) {
     alpha = word[i];
-    urvuuW = +alpha;
+    urvuuW = urvuuW + alpha;
   }
+  return urvuuW;
 }
-find = urvuulah("hello");
-console.log(find);
+let text = "сайн байна уу";
+find = urvuulah(text);
+console.log("анхны эх : ", text);
+console.log("урвуулсан эх : ", find);
+
+//daalgavar9
+// Эхний объектыг хэвлэж гаргах
+// Ангид хэдэн эрэгтэй , эмэгтэй сурагч байгааг олох object буцаадаг функц бичих
+// Сурагчдын насны дунджийг олох функц бичих
+// Нас нь 21-ээс дээш буюу тэнцүү сурагчдыг ол
+// 60-аас дээш оноо авсан cурагчдийг тоол
+
+let student = { name: "Сэд-Эрдэнэ", age: 19, gender: "male", points: 70 };
+let students = [
+  { name: "Сэд-Эрдэнэ", age: 19, gender: "male", points: 70 },
+  { name: "Индра", age: 19, gender: "female", points: 50 },
+  { name: "Хатнаа", age: 21, gender: "male", points: 99 },
+  { name: "Тэмүүлэн", age: 23, gender: "male", points: 55 },
+  { name: "Намуун", age: 23, gender: "female", points: 85 },
+];
+console.log("Сурагчдын мэдээлэл : ", students);
+// Эхний объектыг хэвлэж гаргах
+console.log("эхний сурагчын мэдээлэл : ", students[0]);
+
+//Ангид хэдэн эрэгтэй , эмэгтэй сурагч байгааг олох object буцаадаг функц бичих
+function erEmiigtooloh(arr) {
+  console.log("students", students);
+  let maleN = 0;
+  let femaleN = 0;
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].gender === "male") {
+      maleN++;
+    }
+    if (students[i].gender === "female") {
+      femaleN++;
+    }
+  }
+  return { эрэгтэй_сурагчдын_тоо: maleN, эмэгтэй_сурагчдын_тоо: femaleN };
+}
+// {male" 3, femail: 2}
+find = erEmiigtooloh(students);
+console.log("эрэгтэй, эмэгтэй сурагчдын тоо : ", find);
+// if(students[0].gender === "male") {
+//   return true
+// }
+// if(students[1].gender === "male") {
+//   return true
+// }
+// if(students[i].gender === "male") {
+//   return true
+// }
+// console.log("studeents", students[2].gender);
+// console.log("studeents", students[3].gender);
+
+// Сурагчдын насны дунджийг олох функц бичих
+function average(arr) {
+  let sum = 0;
+  let average = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i].age;
+  }
+  average = sum / arr.length;
+  return average;
+}
+let findAverage = average(students);
+console.log("ангийн сурагчдын насны дундаж утга : ", findAverage);
+
+// Нас нь 21-ээс дээш буюу тэнцүү сурагчдыг ол
+function countOverAge21(arr) {
+  let studentNoverAge21 = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].age >= 21) {
+      studentNoverAge21++;
+    }
+  }
+  return studentNoverAge21;
+}
+let findNumberOver21 = countOverAge21(students);
+console.log("21 болон түүнээс дээш насны сурагчдын тоо : ", findNumberOver21);
+
+// 60-аас дээш оноо авсан cурагчдийг тоол
+function countOverPoint60(arr) {
+  let studentNOverPoint60 = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].points > 60) {
+      studentNOverPoint60++;
+    }
+  }
+  return studentNOverPoint60;
+}
+let findOverPoint60 = countOverPoint60(students);
+console.log("60 аас дээш оноо авсан сурагчдын тоо : ", findOverPoint60);
